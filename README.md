@@ -1,5 +1,5 @@
 # Algo_Cpp
-Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include automatic memorization, framework to turn recursive function into iterations.
+Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include automatic memorization.
 
 # Automatic memorization
 
@@ -31,10 +31,11 @@ Some ideas, code snippets about Algorithm design and implementation, especially 
 ## Usage in rush coding
 
 1. Write your recursive function code, which is intuitive.
+
   Make sure your function is immutable. In other words, the same parameters always return the same value;
   Put all non integer parameters as global variables.
   
-2. Copy the code snippet AFTER your recursive function.
+2. After successful running, copy the code snippet AFTER your recursive function.
 
 3. Change slightly the functor variable declare section if needed.
 
