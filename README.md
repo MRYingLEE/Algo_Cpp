@@ -10,7 +10,7 @@ A circular buffer, circular queue, cyclic buffer or ring buffer is a data struct
 Circular Array is intended to extend the features of std::array:
 1. To support negative index, such as floor -3 to 80.
 2. To support assigned index range, such as year 1989-2019.
-3. To save space for some recursive situation. For example, if you want to calculate Fibonacci numbers of 1000, but you don't need to save the first 999 data. You may use a circular array with a real size of 2.
+3. To save space for some recursive situation. For example, if you want to calculate Fibonacci numbes of the 1000th, but you don't need to save the first 999 data. You may use a circular array with a real size of 2 to calculate.
 
 # Automatic Memoization
 According to https://en.wikipedia.org/wiki/Memoization:
