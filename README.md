@@ -22,11 +22,13 @@ In computing, memoization or memoisation is an optimization technique used prima
   
   1. The syntax should be simple, compatible with C++ 11. 
   
-  2. The recursive function code is not needed to be modified greatly.
+  2. A non-recursive function is not needed to be modified.
   
-  3. The speed is the top priority.
+  3. The recursive function code is not needed to be modified greatly.
+  
+  4. The speed is the top priority.
     
-  4. Best practice usage demo is provided.
+  5. Best practice usage demo is provided.
   
 ## Logical
 
@@ -37,7 +39,31 @@ In computing, memoization or memoisation is an optimization technique used prima
 
 3. We use functors to extend the original recursive function code.
 
-## Usage in rush coding
+## It's easy to use for non-recursive functions by wrapping
+
+just write:
+```c++
+auto new_name=auto_1d(old_name);
+```
+Or
+```c++
+auto new_name=auto_2d(old_name);
+```
+And make all references to the new name.
+
+### OR a tricky way, to rename the function declare 
+```c++
+auto old_name=auto_1d(renamed_name);
+```
+
+Or
+```c++
+auto old_name=auto_2d(renamed_name);
+```
+
+Thereafter, no references are needed to be renamed.
+
+## Usage in rush coding for RECURSIVE function
 
 1. Write your recursive function code, which is intuitive.
 
