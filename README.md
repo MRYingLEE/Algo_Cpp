@@ -1,6 +1,13 @@
 # Algo_Cpp
 Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include automatic Memoization.
 
+# Circular Array
+Circular Array is the same as circular buffer.
+
+According to https://en.wikipedia.org/wiki/Circular_buffer:
+A circular buffer, circular queue, cyclic buffer or ring buffer is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end. This structure lends itself easily to buffering data streams.
+
+
 # Automatic Memoization
 According to https://en.wikipedia.org/wiki/Memoization:
 
