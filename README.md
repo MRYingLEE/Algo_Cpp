@@ -1,5 +1,5 @@
 # Algo_Cpp
-Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include automatic Memoization.
+Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include Automatic Memoization and Circular Array.
 
 # Circular Array
 Technically, Circular Array is the same as circular buffer.
