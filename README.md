@@ -1,12 +1,15 @@
 # Algo_Cpp
-Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include automatic memorization.
+Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include automatic Memoization.
 
-# Automatic memorization
+# Automatic Memoization
+According to https://en.wikipedia.org/wiki/Memoization:
+
+In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. Memoization has also been used in other contexts (and for purposes other than speed gains), such as in simple mutually recursive descent parsing[1]. Although related to caching, memoization refers to a specific case of this optimization, distinguishing it from forms of caching such as buffering or page replacement. In the context of some logic programming languages, memoization is also known as tabling.[2].
 
 ## Objectives: 
-  Competitive Oriented. This is not a general automatic memorization solution or framework. Instead, this is for rush coding. 
+  Competitive Oriented. This is not a general automatic Memoization solution or framework. Instead, this is for rush coding. 
   
-  1. The syntax should be simple, compatible to C++ 11. 
+  1. The syntax should be simple, compatible with C++ 11. 
   
   2. The recursive function code is not needed to be modified greatly.
   
@@ -32,7 +35,9 @@ Some ideas, code snippets about Algorithm design and implementation, especially 
 2. After successful running, copy the following code snippet BEFORE your recursive function.
 
 ```C++
-// ================================================================= Begin of Auto memory section ==================================================
+// ================================================================= Begin of Auto memoization section ==================================================
+
+// The latest code can be found at: https://github.com/MRYingLEE/Algo_Cpp
 
 #include <iostream>
 #include <algorithm>
@@ -43,19 +48,19 @@ Some ideas, code snippets about Algorithm design and implementation, especially 
 #include <vector>
 
 //*************************************************************
-// The automatic memorization function 1D
+// The automatic memoization function 1D
 //*************************************************************
 
 using namespace std;
 
 template<typename T, typename... ARGS>
-class automemory_1d
+class automemoizer_1d
 {
 	std::function<T(size_t, ARGS...)> m_f;
 public:
 	vector<T> memory_1d;
 	vector<bool> memorized_1d;
-	automemory_1d(std::function<T(size_t, ARGS...)> f, size_t size) : m_f(f), memorized_1d(size, false), memory_1d(size) {}
+	automemoizer_1d(std::function<T(size_t, ARGS...)> f, size_t size) : m_f(f), memorized_1d(size, false), memory_1d(size) {}
 	T operator()(size_t id, ARGS... args) {
 		if (memorized_1d[id] == false)
 		{
@@ -97,13 +102,13 @@ public:
 };
 
 template<typename T, typename... ARGS>
-automemory_1d<T, ARGS...> auto_1d(T(*f)(size_t, ARGS...),size_t size) { return automemory_1d<T, ARGS...>(f,size); } // size_t=unsigned int
+automemoizer_1d<T, ARGS...> auto_1d(T(*f)(size_t, ARGS...),size_t size) { return automemoizer_1d<T, ARGS...>(f,size); } // size_t=unsigned int
 
 template<typename T, typename... ARGS>
-automemory_1d<T, ARGS...> auto_1d(T(*f)(int, ARGS...), size_t size) { return automemory_1d<T, ARGS...>(f, size); }
+automemoizer_1d<T, ARGS...> auto_1d(T(*f)(int, ARGS...), size_t size) { return automemoizer_1d<T, ARGS...>(f, size); }
 
 //*************************************************************
-// The automatic memorization function -2D
+// The automatic memoization function -2D
 //*************************************************************
 
 template<typename T, typename... ARGS>
@@ -195,8 +200,7 @@ template<typename T, typename... ARGS>
 automemory_2d<T, ARGS...> auto_2d(T(*f)(int, size_t, ARGS...), size_t size0, size_t size1) { return automemory_2d<T, ARGS...>(f, size0, size1); }
 
 
-// ================================================================= End of Auto memory section ==================================================
-
+// ================================================================= End of Auto memoization section ==================================================
 
 
 ```
@@ -239,11 +243,36 @@ long fib_new(int n, string hint) {
 }
 
 
+
 ```
 
 ### The demo of 2D
 
 ```c++
+
+//*************************************************************
+// The recursive function - 2D Demo
+//*************************************************************
+
+//      The original recursive function
+//
+// This code was digested from:
+// https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+
+/* Returns length of LCS for X[0..m-1], Y[0..n-1] */
+int lcs_recursive(char* X, char* Y, int m, int n)
+{
+	if (m == 0 || n == 0)
+		return 0;
+	if (X[m - 1] == Y[n - 1])
+		return 1 + lcs_recursive(X, Y, m - 1, n - 1);
+	else
+		return std::max(lcs_recursive(X, Y, m, n - 1), lcs_recursive(X, Y, m - 1, n));
+}
+
+
+// Slightly Changed code
+
 //Step 0: rearrange your parameter, let the parameter (size_t/int/unsigned int) which will be used as index at the first positions.
 
 //Step 1: To declare your recursive function with a NEW name at first;
