@@ -46,6 +46,7 @@ In computing, memoization or memoisation is an optimization technique used prima
 #include <vector>
 #include <functional>
 #include <vector>
+#include <string.h>
 
 //*************************************************************
 // The automatic memoization function 1D
@@ -203,6 +204,8 @@ automemory_2d<T, ARGS...> auto_2d(T(*f)(int, size_t, ARGS...), size_t size0, siz
 // ================================================================= End of Auto memoization section ==================================================
 
 
+
+
 ```
 
 3. Change slightly the functor variable declare section if needed.
@@ -309,3 +312,4 @@ int lcs_new(int m, int n, char* X, char* Y)
 }
 
 ```
+## Tested by VS 2019 with C++14, www.cpp.sh with C++11/C++14.
