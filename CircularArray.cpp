@@ -4,8 +4,11 @@
 #include <climits>
 #include <vector>
 #include <array>
+#include <chrono>
+#include <functional>
 
 using namespace std;
+using namespace std::chrono;
 
 inline size_t modulo(const long long index, size_t size) {
 	auto r = index % size;
@@ -48,32 +51,61 @@ public:
 //  64 = 18, 446, 744, 073, 709, 500, 000
 
 // You assigned the 
-inline size_t modulo2(const long long index, unsigned short Exponent) {
-	auto exp = ((long long) 1 << Exponent);
-	auto r = index & (exp -1);
+inline size_t modulo2(const long long index, const long long exp_1) {
+	auto r = index & (exp_1);
 
 	return size_t(r);
 }
 
-template<class T, unsigned short Exponent>
-class circular_array_exponent : public array<T, 1<< Exponent> {
+template<class T, unsigned short Exponent_less_16>
+class circular_array_exponent : public array<T, 1<< Exponent_less_16> {
+	const long long exp_1 = ((long long)1 << Exponent_less_16) -1;
 public:
 	T& operator[] (const long long index)
 	{
-		size_t new_index = modulo2(index, Exponent);
+		size_t new_index = modulo2(index, exp_1);
 
-		return array<T, 1<< Exponent>::at(new_index);
+		return array<T, 1<< Exponent_less_16>::at(new_index);
 	}
 };
 
+long long profile(std::function<void(void)> func) {
+	high_resolution_clock::time_point t1 = high_resolution_clock::now();
+	func();
+	high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+	auto duration = duration_cast<microseconds>(t2 - t1).count();
+
+	return duration;
+}
+
 int main()
 {
-	cout << "============= modulo test ===========" << endl;
+	cout << "============= modulo speed test ===========" << endl;
+
+	auto duration = profile([]() {
+		for (auto i=-10000 ; i <=10000; i++)
+			 modulo(i, 8);
+		});
+
+	cout << "modulo duration:" << duration << endl;
+
+	cout << "============= modulo2 speed test ===========" << endl;
+	auto duration2 = profile([]() {
+		for (auto i = -10000; i <= 10000; i++)
+			modulo2(i, 7);
+		});
+	cout << "modulo2 duration:" << duration2 << endl;
+	cout << "The speed is " << (1.0*duration) / duration2 <<" times"<< endl;
+	// The average speed is 2 times on VC++ 2019.
+
+	cout << "============= modulo value test ===========" << endl;
 
 	for (int i = -5; i < 5; i++)
-		cout << "modulo(" << i << ",8)=" << modulo(i,8) << endl;
+		cout << "modulo(" << i << ",8)=" << modulo(i, 8) << endl;
 
-	cout << "============= modulo test ===========" << endl;
+
+	cout << "============= modulo value test ===========" << endl;
 
 	for (int i = -5; i < 5; i++)
 		cout << "modulo2(" << i << ",3)=" << modulo2(i, 3) << endl;
