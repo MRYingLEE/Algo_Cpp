@@ -1,6 +1,11 @@
 # Algo_Cpp
 Some ideas, code snippets about Algorithm design and implementation, especially for C++. The primary topics include Automatic Memoization and Circular Array.
 
+# Debug Helper
+In some environments, we may have no debug tools. How can we easily debug by printing some information immediately without coding?
+I made a helper function d(a_STL_container), which supports:
+<vector>, <set>, <map>, <unordered_set>, <unordered_map>, <array>. 
+
 # Circular Array
 Technically, Circular Array is the same as circular buffer.
 
