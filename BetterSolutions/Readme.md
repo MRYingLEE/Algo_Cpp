@@ -7,7 +7,7 @@ In order for me to review the solutions easily, besides commenting on the origin
 Given an array arr[] of length N, the task is to find the number of strictly increasing sub-sequences in the given array.
 (https://www.geeksforgeeks.org/count-number-of-increasing-sub-sequences-onlogn/?ref=leftbar-rightbar).
 
-Please check "increasing sub-sequences.cpp" or the following code snip
+Please check "increasing sub-sequences.cpp" or the following code snippet:
 
 ```c++
 #include <iostream>
