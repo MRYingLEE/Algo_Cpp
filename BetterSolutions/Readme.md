@@ -39,27 +39,23 @@ int main()
 		int sum_below = 0;
 
 		for (auto j : m) {
-			{
-				if (j.first < arr[i])
-					sum_below = sum_below + j.second;
-			}
+			if (j.first < arr[i])
+				sum_below = sum_below + j.second;
 		}
 
 		auto f = m.find(arr[i]);
 
-		if (f != m.end())
-		{
+		if (f != m.end()) {
 			m[arr[i]] = f->second + sum_below + 1;
 		}
 		else
-		{
 			m.emplace(arr[i], sum_below + 1);
-		}
+
 		sum_v += sum_below + 1;
 
 	}
 
-	cout << sum_v;
+	std::cout << sum_v;
 
 	return 0;
 }
