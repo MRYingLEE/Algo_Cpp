@@ -3,7 +3,7 @@ From time to time, I found I had some better solutions than the published ones.
 In order for me to review the solutions easily, besides commenting on the original page, I put my solution here also.
 
 
-1. Count number of increasing sub-sequences : O(NlogN)
+# 1. Count number of increasing sub-sequences : O(NlogN)
 Given an array arr[] of length N, the task is to find the number of strictly increasing sub-sequences in the given array.
 (https://www.geeksforgeeks.org/count-number-of-increasing-sub-sequences-onlogn/?ref=leftbar-rightbar).
 
@@ -62,7 +62,7 @@ int main()
 ```
 
 
-2. Counting tilings
+# 2. Counting tilings
 Sometimes the states of a dynamic programming solution are more complex
 than fixed combinations of numbers. As an example, consider the problem of
 calculating the number of distinct ways to fill an n£m grid using 1£2 and 2£1
