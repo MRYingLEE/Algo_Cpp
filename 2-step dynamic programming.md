@@ -28,44 +28,52 @@ Because of the way this algorithm uses optimal substructures (the maximum subarr
 It is very smart, but not intuitive.
 
 Intuitively, by using DP, we have a formula as
-
+```
 dp(n+1)= f(dp(n), dp(n-1),...dp(0))
-
+```
 But, obviously, if we define
+```
 dp(n): the largest sum for the array A[1..n]
-
+```
 We cannot find the function f.
 
 A sequence has the properties of begin, end and length. 
 
 Option A: If we define
+```
 	dp(n):the largest sum for the subsequence ending at n.
-
+```
 It’s easy to find
+```
 	dp(n+1)= max(dp(n), dp(n)+A[n])
-
+```
 Option B: If we define
+```
 	dp(n): the largest sum for the subsequence starting at n.
-
+```
 It’s easy to find
+```
 	dp(n)= max(dp(n+1), dp(n+1)+A[n])
+```
 It works, but not intuitive.
 
 Option C: If we define 
+```
 	dp(n):the largest sum for the subsequence with length n.
-
+```
 It’s hard to find a relation between dp(n+1) and dp(n).
 
 So that to define an ending based function is the natural way to go.
 
-
 Of course, dp(n) is not the answer.
+```
 	answer= max(dp(n), dp(n-1),...dp(0)).
-
+```
 So that in the view of the DP, the solution structure is:
+```
 	dp(n+1)= f(dp[n-1], dp[n-2],...dp[0])
 	answer(n+1) = g(answer([n], answer[n-1],...answer[0]) with answer[0]=h(dp[0])
-
+```
 We may call this kind of DP as 2-step DP.
 
 ## Other 2-steps DP problem
