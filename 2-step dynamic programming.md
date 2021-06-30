@@ -9,7 +9,7 @@ In computer science, the maximum sum subarray problem is the task of finding a c
 For example, for the array of values [−2, 1, −3, 4, −1, 2, 1, −5, 4], the contiguous subarray with the largest sum is [4, −1, 2, 1], with sum 6.
 
 There is a Kadane's algorithm, which can be expressed by Python code as:
-
+```
 def max_subarray(numbers):
     """Find the largest sum of any contiguous subarray."""
     best_sum = 0  # or: float('-inf')
@@ -18,7 +18,7 @@ def max_subarray(numbers):
         current_sum = max(0, current_sum + x)
         best_sum = max(best_sum, current_sum)
     return best_sum
-
+```
 The runtime complexity of Kadane's algorithm is O(n).
 
 ## In the view of DP
